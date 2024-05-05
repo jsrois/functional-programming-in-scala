@@ -17,5 +17,17 @@ class Chapter2Tests extends AnyFlatSpec {
 
   }
 
+  "exercise 2.2" should "return whether an array is sorted" in {
+    assert(exercises.isSorted(Array(1, 2, 3, 4, 5),
+      (a: Int, b: Int) => {a < b} ))
+
+    assert(!exercises.isSorted(Array(1, 3, 2, 4, 5),
+      (a: Int, b: Int) => {a < b} ))
+
+    assert(!exercises.isSorted(Array(1, 2, 3, 4, 5),
+      (a: Int, b: Int) => {a > b} ))
+
+  }
+
 
 }

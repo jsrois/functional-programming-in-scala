@@ -1,6 +1,6 @@
 package chapter3
 
-import chapter3.List.{setHead, sum, tail}
+import chapter3.List.{drop, setHead, sum, tail}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter3Tests extends AnyFlatSpec {
@@ -23,9 +23,14 @@ class Chapter3Tests extends AnyFlatSpec {
   }
 
   "exercise 3.3" should "set a different head for a list" in {
-
     assert(setHead(Nil,1) == List(1))
     assert(setHead(List(2,2,3,4,5),1) == List(1,2,3,4,5))
+  }
+
+  "exercise 3.4" should "drop N values from the head of the list" in {
+    assert(drop(List(1,2,3,4,5), 2) == List(3,4,5))
+    assert(drop(List(1,2,3,4,5), 6) == Nil)
+    assert(drop(List(1,2,3,4,5), 1) == List(2,3,4,5))
   }
 
 }

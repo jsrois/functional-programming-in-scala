@@ -58,4 +58,8 @@ object List {
 
   def length[A](l: List[A]): Int = foldRight(l,0)((_, acc) => acc + 1)
 
+  def productWithFoldLeft(l: List[Int]): Int = foldLeft(l, 1)(_ * _)
+
+  def lengthWithFoldLeft[A](l: List[A]): Int = foldLeft(l,0)((acc, _) => acc + 1  )
+
 }

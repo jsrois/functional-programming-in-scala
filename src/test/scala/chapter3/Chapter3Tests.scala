@@ -1,6 +1,6 @@
 package chapter3
 
-import chapter3.List.{drop, dropWhile, foldLeft, length, setHead, sum, tail}
+import chapter3.List.{drop, dropWhile, foldLeft, length, lengthWithFoldLeft, productWithFoldLeft, setHead, sum, tail}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter3Tests extends AnyFlatSpec {
@@ -44,6 +44,11 @@ class Chapter3Tests extends AnyFlatSpec {
 
   "exercise 3.10" should "implement fold left" in {
     assert( foldLeft(List(1,2,3,4,5),0)(_ + _) == 15 )
+  }
+
+  "exercise 3.11" should "implement sum, product and length using fold left" in {
+    assert(productWithFoldLeft(List(1,2,3,4)) == 24)
+    assert(lengthWithFoldLeft(List(1,2,3,4)) == 4)
   }
 
 }

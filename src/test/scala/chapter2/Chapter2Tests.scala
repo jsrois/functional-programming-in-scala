@@ -47,7 +47,12 @@ class Chapter2Tests extends AnyFlatSpec {
     assert(exercises.uncurry(f)("Javi", 30) == f("Javi")(30))
   }
 
+  "exercise 2.5" should "compose two functions" in {
+    val f = (n: Int) => n.toString
+    val g = (name: String) => name.length
 
+    val result = exercises.compose(f,g)("Javi")
 
-
+    assert(result == "4")
+  }
 }

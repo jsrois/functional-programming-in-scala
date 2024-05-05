@@ -55,4 +55,5 @@ class Chapter2Tests extends AnyFlatSpec {
 
     assert(result == "4")
   }
+
 }

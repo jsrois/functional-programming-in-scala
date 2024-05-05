@@ -49,6 +49,12 @@ object List {
       case Cons(x, tail) => f(x, foldRight(tail, acc)(f))
     }
 
+  def length[A](l: List[A]): Int = foldRight(l,0)((_, acc) => acc + 1)
+
+  def productWithFoldLeft(l: List[Int]): Int = foldLeft(l, 1)(_ * _)
+
+  def lengthWithFoldLeft[A](l: List[A]): Int = foldLeft(l,0)((acc, _) => acc + 1  )
+
   @tailrec
   def foldLeft[A,B](as: List[A], acc: B)(f: (B,A) => B): B =
     as match {
@@ -56,10 +62,10 @@ object List {
       case Cons(h,t) => foldLeft(t, f(acc, h))(f)
     }
 
-  def length[A](l: List[A]): Int = foldRight(l,0)((_, acc) => acc + 1)
+  def add1toEach(l: List[Int]): List[Int] = l match {
+    case Nil => Nil
+    case Cons(h,t) => Cons(h+1, add1toEach(t))
+  }
 
-  def productWithFoldLeft(l: List[Int]): Int = foldLeft(l, 1)(_ * _)
-
-  def lengthWithFoldLeft[A](l: List[A]): Int = foldLeft(l,0)((acc, _) => acc + 1  )
 
 }

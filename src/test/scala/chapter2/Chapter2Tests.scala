@@ -41,5 +41,13 @@ class Chapter2Tests extends AnyFlatSpec {
     assert(exercises.curry(f)("Javi")(30) == f("Javi", 30))
   }
 
+  "exercise 2.4" should "implement an uncurry function" in {
+    val f = (name: String) => (age: Int) => "My name is %s and I'm %s years old".formatted(name, age)
+
+    assert(exercises.uncurry(f)("Javi", 30) == f("Javi")(30))
+  }
+
+
+
 
 }

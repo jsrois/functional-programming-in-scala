@@ -1,6 +1,6 @@
 package chapter3
 
-import chapter3.List.{add1toEach, drop, dropWhile, foldLeft, length, lengthWithFoldLeft, productWithFoldLeft, setHead, sum, tail}
+import chapter3.List.{add1toEach, drop, dropWhile, eachToString, foldLeft, length, lengthWithFoldLeft, productWithFoldLeft, setHead, sum, tail}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter3Tests extends AnyFlatSpec {
@@ -53,5 +53,9 @@ class Chapter3Tests extends AnyFlatSpec {
 
   "exercise 3.16" should "add 1 to each integer" in {
     assert(add1toEach(List(1,2,3)) == List(2,3,4))
+  }
+
+  "exercise 3.17" should "transform each element to string" in {
+    assert(eachToString(List(1,2,3)) == List("1", "2", "3"))
   }
 }

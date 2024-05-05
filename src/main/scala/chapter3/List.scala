@@ -67,5 +67,10 @@ object List {
     case Cons(h,t) => Cons(h+1, add1toEach(t))
   }
 
+  def eachToString(l: List[Int]): List[String] = l match {
+    case Nil => Nil
+    case Cons(h, t) => Cons(h.toString, eachToString(t))
+  }
+
 
 }

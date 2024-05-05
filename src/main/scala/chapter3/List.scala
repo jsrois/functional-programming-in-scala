@@ -20,10 +20,7 @@ object List {
     if (args.isEmpty) Nil
     else Cons(args.head, apply(args.tail: _*))
 
-  def tail[A](l: List[A]): List[A] = l match {
-    case Nil => Nil
-    case Cons(head, tail) => tail
-  }
+  def tail[A](l: List[A]): List[A] = drop(l,1)
 
   def setHead[A](l: List[A], h: A): List[A] = l match {
     case Nil => Cons (h, l)
@@ -37,6 +34,12 @@ object List {
       case Nil => Nil
       case Cons(_, tail) => if (n == 0) l else drop(tail, n-1)
     }
+  }
+
+  @tailrec
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Nil => Nil
+    case Cons(h, t) => if (f(h)) dropWhile(t, f) else l
   }
 
 }

@@ -1,6 +1,6 @@
 package chapter3
 
-import chapter3.List.{drop, setHead, sum, tail}
+import chapter3.List.{drop, dropWhile, setHead, sum, tail}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter3Tests extends AnyFlatSpec {
@@ -31,6 +31,10 @@ class Chapter3Tests extends AnyFlatSpec {
     assert(drop(List(1,2,3,4,5), 2) == List(3,4,5))
     assert(drop(List(1,2,3,4,5), 6) == Nil)
     assert(drop(List(1,2,3,4,5), 1) == List(2,3,4,5))
+  }
+
+  "exercise 3.5" should "drop while condition" in {
+    assert(dropWhile(List(1,2,3,4,5), (a: Int) => a < 4) == List(4,5))
   }
 
 }

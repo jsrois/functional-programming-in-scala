@@ -37,9 +37,9 @@ object List {
   }
 
   @tailrec
-  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+  def dropWhile[A](l: List[A]) (f: A => Boolean): List[A] = l match {
     case Nil => Nil
-    case Cons(h, t) => if (f(h)) dropWhile(t, f) else l
+    case Cons(h, t) => if (f(h)) dropWhile(t)(f) else l
   }
 
 
@@ -47,6 +47,13 @@ object List {
     as match {
       case Nil => acc
       case Cons(x, tail) => f(x, foldRight(tail, acc)(f))
+    }
+
+  @tailrec
+  def foldLeft[A,B](as: List[A], acc: B)(f: (B,A) => B): B =
+    as match {
+      case Nil => acc
+      case Cons(h,t) => foldLeft(t, f(acc, h))(f)
     }
 
   def length[A](l: List[A]): Int = foldRight(l,0)((_, acc) => acc + 1)

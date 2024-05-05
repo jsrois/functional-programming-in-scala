@@ -19,14 +19,26 @@ class Chapter2Tests extends AnyFlatSpec {
 
   "exercise 2.2" should "return whether an array is sorted" in {
     assert(exercises.isSorted(Array(1, 2, 3, 4, 5),
-      (a: Int, b: Int) => {a < b} ))
+      (a: Int, b: Int) => {
+        a < b
+      }))
 
     assert(!exercises.isSorted(Array(1, 3, 2, 4, 5),
-      (a: Int, b: Int) => {a < b} ))
+      (a: Int, b: Int) => {
+        a < b
+      }))
 
     assert(!exercises.isSorted(Array(1, 2, 3, 4, 5),
-      (a: Int, b: Int) => {a > b} ))
+      (a: Int, b: Int) => {
+        a > b
+      }))
 
+  }
+
+  "exercise 2.3" should "implement a currying function" in {
+    val f = (name: String, age: Int) => "My name is %s and I'm %s years old".formatted(name, age)
+
+    assert(exercises.curry(f)("Javi")(30) == f("Javi", 30))
   }
 
 

@@ -42,4 +42,13 @@ object List {
     case Cons(h, t) => if (f(h)) dropWhile(t, f) else l
   }
 
+
+  def foldRight[A,B](as: List[A], acc: B)(f: (A,B) => B): B =
+    as match {
+      case Nil => acc
+      case Cons(x, tail) => f(x, foldRight(tail, acc)(f))
+    }
+
+  def length[A](l: List[A]): Int = foldRight(l,0)((_, acc) => acc + 1)
+
 }

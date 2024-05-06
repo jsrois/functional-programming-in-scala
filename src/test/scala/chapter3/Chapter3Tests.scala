@@ -88,24 +88,27 @@ class Chapter3Tests extends AnyFlatSpec {
     assert(zipWith(List(1, 2, 3), List(2, 3, 4))(_ + _) == List(3, 5, 7))
   }
 
-
-  "exercise 3.25" should "count the number of nodes in a tree" in {
-    val tree = Branch(
+  protected val tree: Branch[Int] = Branch(
+    Branch(
+      Leaf(2),
+      Leaf(13)
+    ),
+    Branch(
+      Leaf(10),
       Branch(
-        Leaf(2),
-        Leaf(13)
-      ),
-      Branch(
-        Leaf(10),
-        Branch(
-          Leaf(3),
-          Leaf(2)
-        )
+        Leaf(3),
+        Leaf(2)
       )
     )
+  )
 
+  "exercise 3.25" should "count the number of nodes in a tree" in {
     assert(size(tree) == 9)
-
   }
+
+  "exercise 3.26" should "get the maximum element in a Tree[Int]" in {
+    assert(Tree.max(tree) == 13)
+  }
+
 
 }

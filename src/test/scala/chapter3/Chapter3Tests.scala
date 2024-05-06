@@ -63,4 +63,8 @@ class Chapter3Tests extends AnyFlatSpec {
     assert(List.map(List(1, 2, 3))(2 * _) == List(2, 4, 6))
   }
 
+  "exercise 3.19" should "implement filter" in {
+    assert(List.filter(List(1,2,4,6,7))(_%2==0) == List(2,4,6))
+  }
+
 }

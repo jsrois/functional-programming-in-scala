@@ -1,7 +1,7 @@
 package chapter3
 
 import chapter3.List.{add1toEach, append, drop, dropWhile, eachToString, filterWithFlatMap, foldLeft, length, lengthWithFoldLeft, productWithFoldLeft, setHead, sum, tail, zipWith, zipWithSum}
-import chapter3.Tree.size
+import chapter3.Tree.{depthWithFold, maxWithFold, size, sizeWithFold}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter3Tests extends AnyFlatSpec {
@@ -102,6 +102,20 @@ class Chapter3Tests extends AnyFlatSpec {
     )
   )
 
+  protected val tree2 = Branch(
+    Branch(
+      Leaf(3),
+      Leaf(14)
+    ),
+    Branch(
+      Leaf(11),
+      Branch(
+        Leaf(4),
+        Leaf(3)
+      )
+    )
+  )
+
   "exercise 3.25" should "count the number of nodes in a tree" in {
     assert(size(tree) == 9)
   }
@@ -110,5 +124,19 @@ class Chapter3Tests extends AnyFlatSpec {
     assert(Tree.max(tree) == 13)
   }
 
+  "exercise 3.27" should "calculate maximum depth of a tree" in {
+    assert(Tree.depth(tree) == 4)
+  }
+
+  "exercise 3.28" should "implement map for trees" in {
+    assert(Tree.map(tree)(_ + 1) == tree2)
+  }
+
+  "exercise 3.29" should "implement fold for tree" in {
+    assert(sizeWithFold(tree) == 9)
+    assert(maxWithFold(tree) == 13 )
+    assert(depthWithFold(tree) == 3)
+//    assert(mapWithFold(tree) == tree2)
+  }
 
 }

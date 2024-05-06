@@ -1,6 +1,6 @@
 package chapter3
 
-import chapter3.List.{add1toEach, append, drop, dropWhile, eachToString, foldLeft, length, lengthWithFoldLeft, productWithFoldLeft, setHead, sum, tail}
+import chapter3.List.{add1toEach, append, drop, dropWhile, eachToString, filterWithFlatMap, foldLeft, length, lengthWithFoldLeft, productWithFoldLeft, setHead, sum, tail}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter3Tests extends AnyFlatSpec {
@@ -73,6 +73,10 @@ class Chapter3Tests extends AnyFlatSpec {
 
   "exercise 3.20" should "implement flatMap" in {
     assert(List.flatMap(List(1,2,3))(i => List(i, i)) == List(1,1,2,2,3,3))
+  }
+
+  "exercise 3.21" should "implement filter using flatmap" in {
+    assert(filterWithFlatMap(List(1,2,4,5,6,7))(_ % 2 == 0) == List(2,4,6))
   }
 
 }

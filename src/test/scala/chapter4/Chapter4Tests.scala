@@ -28,4 +28,20 @@ class Chapter4Tests extends AnyFlatSpec{
     assert(Some(10).filter(_ % 2 == 1) == None)
   }
 
+  def mean(xs: Seq[Double]): Option[Double] =
+    if (xs.isEmpty) None
+    else Some(xs.sum / xs.length)
+
+  def variance(xs: Seq[Double]): Option[Double] =
+    mean(xs)
+      .flatMap( m => mean(xs.map( x => math.pow(x - m, 2))))
+
+  "exercise 4.2" should "implement variance" in {
+    val seq = Seq(1.0,0.0,-1.0)
+
+    assert(mean(seq) == Some(0))
+
+    assert(variance(seq) == Some(2.0/3))
+  }
+
 }

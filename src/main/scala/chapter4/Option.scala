@@ -18,10 +18,20 @@ sealed trait Option[+A] {
     map(Some(_)).getOrElse(ob)
 
   def filter(f: A => Boolean): Option[A] =
-    flatMap((x: A) => if (f(x)) Some(x) else None )
+    flatMap((x: A) => if (f(x)) Some(x) else None)
 
 }
+
 case class Some[+A](get: A) extends Option[A]
+
 case object None extends Option[Nothing]
+
+object Option {
+  def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
+    a flatMap (aa =>
+      b map (bb =>
+        f(aa, bb)))
+
+}
 
 

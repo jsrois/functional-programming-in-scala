@@ -1,5 +1,6 @@
 package chapter4
 
+import chapter4.Option.map2
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Chapter4Tests extends AnyFlatSpec{
@@ -42,6 +43,12 @@ class Chapter4Tests extends AnyFlatSpec{
     assert(mean(seq) == Some(0))
 
     assert(variance(seq) == Some(2.0/3))
+  }
+
+  "exercise 4.3" should "implements map2" in {
+    assert( map2(Some(10), Some(2))(_ + _) == Some(12))
+    assert(Option.map2(None: Option[Int], Some(2): Option[Int])((x, y) => x + y) == None)
+    assert( map2(Some(2), None)(_ + _) == None)
   }
 
 }
